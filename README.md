@@ -151,6 +151,9 @@ les courbes et à quoi correspondent les seuils.
 Langue (français, anglais, ou celle du système), thème clair ou sombre, taille
 du texte, onglet d'ouverture, mémoire de la position de la fenêtre.
 
+![Thème clair](docs/theme-clair.png)
+<sup>Le même carnet en thème clair.</sup>
+
 ### Ordinateur
 Modèle forcé, port série par défaut — et surtout **les délais**, qui sont ce
 qu'on règle quand un ordinateur répond mal :

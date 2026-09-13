@@ -149,6 +149,9 @@ Hovering a chart explains what the curves show and what the thresholds mean.
 Language (French, English, or the system's), light or dark theme, text size,
 tab on startup, window position memory.
 
+![Light theme](docs/en/theme-clair.png)
+<sup>The same logbook in the light theme.</sup>
+
 ### Dive computer
 Forced model, default serial port — and above all **the timings**, which are
 what you reach for when a computer answers poorly:
