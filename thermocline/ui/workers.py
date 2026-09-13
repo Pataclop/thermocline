@@ -15,7 +15,7 @@ from PyQt6 import QtCore
 
 from ..config import Settings
 from ..i18n import T
-from ..importer import NoPortFound, import_from_port, open_source
+from ..importer import NoPortFoundError, import_from_port, open_source
 from ..storage import Database, ImportResult
 
 log = logging.getLogger(__name__)
@@ -71,7 +71,7 @@ class ImportWorker(QtCore.QThread):
                 progress=lambda step, done, total: self.progress.emit(step, done, total),
             )
             self.succeeded.emit(result)
-        except NoPortFound as exc:
+        except NoPortFoundError as exc:
             self.failed.emit(str(exc), "")
         except TimeoutError:
             self.failed.emit(T(TIMEOUT_ADVICE), traceback.format_exc())
@@ -106,7 +106,7 @@ class ProbeWorker(QtCore.QThread):
             source = open_source(settings=self.settings)
             info = source.connect()
             self.succeeded.emit(info.label)
-        except NoPortFound as exc:
+        except NoPortFoundError as exc:
             self.failed.emit(str(exc))
         except TimeoutError:
             self.failed.emit(T(TIMEOUT_ADVICE))

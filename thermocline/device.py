@@ -216,7 +216,7 @@ class ProtocolError(IOError):
     """Reponse inattendue de l'ordinateur de plongee."""
 
 
-class UnsupportedModel(ProtocolError):
+class UnsupportedModelError(ProtocolError):
     """Modele identifie mais dont le format n'est pas gere."""
 
 
@@ -429,7 +429,7 @@ class MaresDevice:
     def close(self) -> None:
         self.transport.close()
 
-    def __enter__(self) -> "MaresDevice":
+    def __enter__(self) -> MaresDevice:
         self.connect()
         return self
 
@@ -521,7 +521,7 @@ class MaresDevice:
     def dump_memory(self, progress: Callable[[int, int], None] | None = None) -> bytes:
         """Recopie toute la memoire flash (utile pour deboguer un format)."""
         if self.family is Family.GENIUS:
-            raise UnsupportedModel(
+            raise UnsupportedModelError(
                 T(
                     "Le Mares {model} n'expose pas sa mémoire flash : ce modèle "
                     "communique par objets, il n'y a rien à recopier."

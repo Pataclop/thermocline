@@ -183,7 +183,7 @@ class Settings:
     # -- persistance ----------------------------------------------------
 
     @classmethod
-    def load(cls, path: Path | None = None) -> "Settings":
+    def load(cls, path: Path | None = None) -> Settings:
         """Relit les reglages; toute valeur douteuse revient a sa valeur d'usine."""
         target = path or settings_path()
         if not target.exists():
@@ -222,13 +222,13 @@ class Settings:
         log.debug("Réglages enregistrés dans %s", target)
         return target
 
-    def reset(self) -> "Settings":
+    def reset(self) -> Settings:
         """Remet tout aux valeurs d'usine, sauf le chemin de la base."""
         fresh = Settings()
         fresh.db_path = self.db_path
         return fresh
 
-    def copy(self) -> "Settings":
+    def copy(self) -> Settings:
         return dataclasses.replace(self)
 
 

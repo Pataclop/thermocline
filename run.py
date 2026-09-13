@@ -33,8 +33,8 @@ def attach_console() -> None:
     try:
         import ctypes
 
-        ATTACH_PARENT_PROCESS = -1
-        if not ctypes.windll.kernel32.AttachConsole(ATTACH_PARENT_PROCESS):
+        attach_parent_process = -1  # ATTACH_PARENT_PROCESS, dans l'API Windows
+        if not ctypes.windll.kernel32.AttachConsole(attach_parent_process):
             return
         sys.stdout = open("CONOUT$", "w", encoding="utf-8", errors="replace")
         sys.stderr = open("CONOUT$", "w", encoding="utf-8", errors="replace")

@@ -64,7 +64,26 @@ target-version = "py310"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "N", "UP", "B", "C4", "SIM"]
-ignore = ["E501"]
+ignore = [
+    # La longueur des lignes est tenue à la main; couper une phrase de
+    # commentaire au caractère près nuit plus qu'elle n'aide.
+    "E501",
+    # `zip()` sans `strict=`: plusieurs parcours comparent volontairement une
+    # suite avec elle-même décalée d'un cran (`zip(xs, xs[1:])`).
+    "B905",
+    # `contextlib.suppress` rend le code plus court mais moins lisible dans
+    # les quelques fermetures « au mieux » du programme.
+    "SIM105",
+    # Les deux flux rouverts sur la console Windows vivent jusqu'à la fin du
+    # programme: un gestionnaire de contexte les fermerait trop tôt.
+    "SIM115",
+    # `enumerate()` compterait les enregistrements lus; ces compteurs-là
+    # comptent les plongées effectivement rendues, ce qui n'est pas pareil.
+    "SIM113",
+]
 
 [tool.ruff.lint.per-file-ignores]
+# Qt impose ses noms en camelCase pour les méthodes redéfinies.
+"thermocline/ui/*" = ["N802", "N803", "N806"]
+"thermocline/app.py" = ["N803"]
 "tests/*" = ["N802"]

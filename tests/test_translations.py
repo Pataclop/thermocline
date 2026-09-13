@@ -50,11 +50,10 @@ def module_constants(tree: ast.Module) -> dict[str, str]:
     """Constantes de module dont la valeur est une chaine."""
     found: dict[str, str] = {}
     for node in tree.body:
-        if isinstance(node, ast.Assign) and isinstance(node.value, ast.Constant):
-            if isinstance(node.value.value, str):
-                for target in node.targets:
-                    if isinstance(target, ast.Name):
-                        found[target.id] = node.value.value
+        if isinstance(node, ast.Assign) and isinstance(node.value, ast.Constant) and isinstance(node.value.value, str):
+            for target in node.targets:
+                if isinstance(target, ast.Name):
+                    found[target.id] = node.value.value
     return found
 
 

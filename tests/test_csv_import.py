@@ -6,7 +6,12 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from thermocline.csv_import import CsvFormatError, annotate_known, import_rows, parse_csv_file
+from thermocline.csv_import import (
+    CsvFormatError,
+    annotate_known,
+    import_rows,
+    parse_csv_file,
+)
 from thermocline.storage import Database
 
 CARNET_EXPORT = (

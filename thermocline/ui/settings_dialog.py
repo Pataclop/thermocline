@@ -22,7 +22,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6 import QtGui, QtWidgets
 
 from .. import config
 from ..config import Settings

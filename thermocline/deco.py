@@ -64,7 +64,7 @@ class TissueState:
     n2: list[float]
     he: list[float]
 
-    def copy(self) -> "TissueState":
+    def copy(self) -> TissueState:
         return TissueState(n2=list(self.n2), he=list(self.he))
 
 

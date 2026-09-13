@@ -322,7 +322,7 @@ def _cmd_dump(args: argparse.Namespace) -> int:
     try:
         info = source.connect()
         print(T("Connecté : {label}").format(label=info.label))
-        total = getattr(source, "layout").memsize
+        total = source.layout.memsize
         print(T("Lecture de {total} octets, cela prend plusieurs minutes…").format(total=total))
 
         def report(done: int, size: int) -> None:

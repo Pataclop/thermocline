@@ -5,7 +5,6 @@ from __future__ import annotations
 import csv
 import datetime as _dt
 import logging
-from pathlib import Path
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
@@ -147,9 +146,12 @@ class DiveTableModel(QtCore.QAbstractTableModel):
             return int(
                 QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignVCenter
             )
-        if role == QtCore.Qt.ItemDataRole.ForegroundRole and key == "max_depth":
-            if row.max_depth >= 40:
-                return QtGui.QColor(theme.WARN)
+        if (
+            role == QtCore.Qt.ItemDataRole.ForegroundRole
+            and key == "max_depth"
+            and row.max_depth >= 40
+        ):
+            return QtGui.QColor(theme.WARN)
         if role == QtCore.Qt.ItemDataRole.ToolTipRole:
             bits = [dates.long_datetime(row.started_at)]
             if row.site:

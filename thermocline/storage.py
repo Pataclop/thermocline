@@ -280,7 +280,7 @@ class Database:
     def close(self) -> None:
         self.conn.close()
 
-    def __enter__(self) -> "Database":
+    def __enter__(self) -> Database:
         return self
 
     def __exit__(self, *exc_info: object) -> None:

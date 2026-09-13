@@ -441,7 +441,7 @@ class ObjectProtocolTests(unittest.TestCase):
 
     def test_memory_dump_is_refused_with_an_explanation(self) -> None:
         computer, _ = self._connect(1)
-        with self.assertRaises(dev.UnsupportedModel):
+        with self.assertRaises(dev.UnsupportedModelError):
             computer.dump_memory()
 
 

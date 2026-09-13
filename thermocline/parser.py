@@ -29,11 +29,9 @@ import logging
 from dataclasses import dataclass
 
 from .device import (
-    GENIUS_FAMILY,
     ICONHDNET,
     QUADAIR,
     SMART,
-    SMART_FAMILY,
     SMARTAIR,
     SMARTAPNEA,
     Family,

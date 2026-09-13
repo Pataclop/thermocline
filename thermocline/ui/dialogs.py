@@ -5,8 +5,8 @@ from __future__ import annotations
 from PyQt6 import QtCore, QtWidgets
 
 from .. import dates
-from ..i18n import T, count_label
 from ..csv_import import CsvDiveRow, CsvParseResult
+from ..i18n import T, count_label
 from ..storage import Database, HiddenDive
 from . import theme
 

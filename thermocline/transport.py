@@ -155,7 +155,7 @@ class SerialTransport:
         self._ser: serial.Serial | None = None
 
     @classmethod
-    def from_settings(cls, port: str, settings) -> "SerialTransport":
+    def from_settings(cls, port: str, settings) -> SerialTransport:
         """Construit la liaison a partir des preferences de l'utilisateur."""
         return cls(
             port,
@@ -211,7 +211,7 @@ class SerialTransport:
             finally:
                 self._ser = None
 
-    def __enter__(self) -> "SerialTransport":
+    def __enter__(self) -> SerialTransport:
         self.open()
         return self
 

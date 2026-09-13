@@ -20,14 +20,13 @@ import random
 from collections.abc import Callable, Iterator
 
 from .device import (
+    MODELS,
     QUAD,
     SMART_FAMILY,
     Family,
     MemoryLayout,
-    MODELS,
     crc16_ccitt,
     dive_geometry,
-    family_of,
 )
 from .models import DeviceInfo, DiveMode
 from .parser import GENIUS_INTERVAL, LAYOUT_GENIUS, LAYOUT_ICONHD, SURFACE_TAIL
@@ -376,7 +375,7 @@ class SimulatedDevice:
     def close(self) -> None:
         return None
 
-    def __enter__(self) -> "SimulatedDevice":
+    def __enter__(self) -> SimulatedDevice:
         self.connect()
         return self
 

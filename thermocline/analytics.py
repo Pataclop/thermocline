@@ -15,6 +15,7 @@ from . import dates, deco
 from .models import Dive, DiveMode, GasMix, Sample
 from .storage import DiveSummary
 
+
 @dataclass(frozen=True)
 class Thresholds:
     """Seuils d'analyse, tous reglables depuis la boite « Paramètres ».
@@ -513,9 +514,7 @@ def count_yoyos(depths: list[float], threshold: float = YOYO_THRESHOLD) -> int:
                 count += 1
             direction = 1
             anchor = depth
-        elif direction > 0 and depth > anchor:
-            anchor = depth
-        elif direction < 0 and depth < anchor:
+        elif direction > 0 and depth > anchor or direction < 0 and depth < anchor:
             anchor = depth
     return count
 

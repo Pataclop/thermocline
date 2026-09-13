@@ -8,8 +8,8 @@ from typing import Protocol
 
 from . import config
 from .device import MaresDevice
-from .models import DeviceInfo, Dive
 from .i18n import T
+from .models import DeviceInfo, Dive
 from .parser import ParseError, parse_raw_dive
 from .simulator import SimulatedDevice
 from .storage import Database, ImportResult
@@ -38,7 +38,7 @@ class DiveSource(Protocol):
     ): ...
 
 
-class NoPortFound(RuntimeError):
+class NoPortFoundError(RuntimeError):
     """Aucun port serie utilisable n'a ete trouve."""
 
 
@@ -65,7 +65,7 @@ def open_source(
     preferences = settings or config.settings()
     target = port or preferences.port or autodetect_port()
     if not target:
-        raise NoPortFound(
+        raise NoPortFoundError(
             T(
                 "Aucun port série détecté. Branchez le câble USB Mares, vérifiez "
                 "que le pilote du convertisseur est installé, puis réessayez."

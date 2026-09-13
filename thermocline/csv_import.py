@@ -323,7 +323,7 @@ def _parse_mode(text: str | None, gasmixes: list[GasMix]) -> DiveMode:
     return DiveMode.AIR
 
 
-def annotate_known(db: "Database", result: CsvParseResult) -> None:
+def annotate_known(db: Database, result: CsvParseResult) -> None:
     """Marque les lignes deja presentes en base (ou masquees) comme doublons."""
     known = db.known_fingerprints(DEVICE_SERIAL)
     ignored = db.ignored_fingerprints(DEVICE_SERIAL)
@@ -331,7 +331,7 @@ def annotate_known(db: "Database", result: CsvParseResult) -> None:
         row.duplicate = row.dive.fingerprint in known or row.dive.fingerprint in ignored
 
 
-def import_rows(db: "Database", rows: list[CsvDiveRow]) -> ImportResult:
+def import_rows(db: Database, rows: list[CsvDiveRow]) -> ImportResult:
     """Insere les lignes choisies et reporte les champs saisis (binome, notes…)."""
     pending = [(row.dive, row.site) for row in rows]
     result = db.import_dives(pending)

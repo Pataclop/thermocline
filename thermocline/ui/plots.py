@@ -18,9 +18,9 @@ from collections.abc import Iterable, Sequence
 import pyqtgraph as pg
 from PyQt6 import QtCore, QtGui, QtWidgets
 
-from ..i18n import T
 from ..analytics import LIMITS, DiveStats
-from ..deco import NCOMPARTMENTS, N2_HALFLIVES
+from ..deco import N2_HALFLIVES, NCOMPARTMENTS
+from ..i18n import T
 from ..models import Dive, DiveMode, Sample
 from . import theme
 
