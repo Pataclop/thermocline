@@ -1,0 +1,41 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    name: ${{ matrix.os }} · Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # Les trois systemes et les deux extremites de la plage de versions
+        # supportees: c'est la ou les surprises arrivent.
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ["3.10", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+
+      - name: Installer les dépendances
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Lancer les tests
+        # Les tests ne demandent aucun affichage: ils tournent sans serveur X.
+        run: python -m unittest discover -s tests -t . -v
+
+      - name: Vérifier que la ligne de commande démarre
+        run: |
+          python -m thermocline models
+          python -m thermocline diagnostic

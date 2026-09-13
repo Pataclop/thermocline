@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.Python
+
+# Outils
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Données de plongée : rien de personnel ne doit entrer dans le dépôt.
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.db
+settings.json
+donnees/
+*.bin
+plongees-*.csv
+profil-*.csv
+dives-*.csv
+profile-*.csv
+
+# Ressources fabriquées
+thermocline/resources/thermocline.icns
+thermocline/resources/*.iconset/
+
+# Systèmes
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*~

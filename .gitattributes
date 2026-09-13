@@ -1,0 +1,9 @@
+# Le dépôt stocke du LF; chaque système rend ce qu'il attend à la sortie.
+* text=auto eol=lf
+
+# Fichiers binaires : surtout ne rien convertir.
+*.png binary
+*.ico binary
+*.icns binary
+*.sqlite binary
+*.bin binary

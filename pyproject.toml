@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "thermocline"
+version = "1.1.0"
+description = "Carnet de plongée local pour les ordinateurs Mares — local dive logbook for Mares dive computers"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "LGPL-2.1-or-later" }
+authors = [{ name = "Pataclop" }]
+keywords = ["scuba", "diving", "logbook", "mares", "dive computer", "plongée"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: X11 Applications :: Qt",
+    "Environment :: Win32 (MS Windows)",
+    "Environment :: MacOS X",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)",
+    "Natural Language :: English",
+    "Natural Language :: French",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+]
+
+dependencies = [
+    "PyQt6>=6.5",
+    "pyqtgraph>=0.13",
+    "pyserial>=3.5",
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+build = ["pyinstaller>=6.0", "pillow>=10.0"]
+
+[project.urls]
+Homepage = "https://github.com/Pataclop/thermocline"
+Source = "https://github.com/Pataclop/thermocline"
+Issues = "https://github.com/Pataclop/thermocline/issues"
+
+[project.scripts]
+thermocline = "thermocline.cli:main"
+
+[project.gui-scripts]
+thermocline-gui = "thermocline.app:run_gui"
+
+[tool.setuptools.packages.find]
+include = ["thermocline*"]
+
+[tool.setuptools.package-data]
+thermocline = ["resources/*"]
+
+[tool.ruff]
+line-length = 90
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4", "SIM"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["N802"]

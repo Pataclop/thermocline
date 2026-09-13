@@ -1,0 +1,7 @@
+# Interface et graphiques
+PyQt6>=6.5
+pyqtgraph>=0.13
+# Liaison serie USB vers l'ordinateur de plongee
+pyserial>=3.5
+# Calculs numeriques (requis par pyqtgraph)
+numpy>=1.24
